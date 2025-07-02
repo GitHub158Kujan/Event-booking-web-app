@@ -1,0 +1,65 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+
+  <!-- Page Content -->
+     <div class="dashboard">
+        <h2 class="dashboard-title">Dashboard</h2>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="dashboard-card">
+              <h2>214</h2>
+              <p>Total Events</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="dashboard-card">
+              <h2>3035</h2>
+              <p>Total Bookings</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="dashboard-card">
+              <h2>124</h2>
+              <p>Total Users</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming Events -->
+      <div class="analysis">
+  <div class="box">
+    <div class="upcomming-events">
+      <div class="heading">Upcoming Events</div>
+      {% if events %}
+        {% for event in events[:8] %}
+          <div class="event">
+            <div class="title"><p>{{ event.name }}</p></div>
+            <div class="date"><p>{{ event.date }}</p></div>
+            <div class="location"><p>{{ event.city }}, {{ event.state }}</p></div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p style="padding-left: 30px;">No Data available</p>
+      {% endif %}
+    </div>
+
+  <div class="box column-layout">
+    <div class="sales-chart">
+      <h2>Monthly Sales</h2>
+      <canvas id="salesChart"></canvas>
+      <div class="header">
+     <h2>Sales Distribution by Genre</h2>
+    </div>
+    </div>
+
+
+   <div class="genre-chart">
+  <canvas id="genreChart" style="margin-top: 0;"></canvas>
+</div>
+
+  </div>
+</div>
+
+{% endblock %}

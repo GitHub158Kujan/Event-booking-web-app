@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #ffccbc, #ffab91);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+}
+
+.auth-box {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-box h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #e65100;
+}
+
+.form-control {
+  border-radius: 6px;
+  box-shadow: none;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 6px;
+  background-color: #ff5722;
+  border-color: #ff5722;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e64a19;
+  border-color: #e64a19;
+}
+

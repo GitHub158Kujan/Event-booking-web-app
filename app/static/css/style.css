@@ -1,0 +1,164 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+ 
+
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.carousel {
+  height: 500px;
+  overflow: hidden;
+}
+
+.carousel-inner,
+.carousel-item,
+.carousel-item img {
+  height: 100%;
+  object-fit: cover; /* Or `contain` depending on your design */
+}
+ .carousel-item {
+    position: relative;
+  }
+
+  .carousel-item::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(8, 8, 8, 0.555); /* Dark overlay */
+    z-index: 1;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .carousel-caption {
+    z-index: 2;
+    position: absolute;
+    bottom: 20%;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+    margin-top: 30px;
+    bottom: 35%;
+    
+  }
+
+.carousel-caption h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    margin-top: 0;
+}
+ .carousel-text {
+    color: #ffffff;
+    font-size: 30px;
+    text-shadow: 2px 2px 8px #000;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+
+.heading h2{
+  padding-left: 20px;
+  font-size: 25px;
+  padding-top: 25px;
+  padding-bottom: 30px;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.card-img-top{
+  width: 100%; 
+  height: 180px; 
+  object-fit: cover;
+}
+
+.card-body{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding: 8px 12px;
+  background-color:#d3cdcd;
+  border: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover{
+  background-color: #fff3e0; 
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+
+}
+
+.card-title{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color:black;
+  border: none;
+  
+}
+
+.card-footer{
+  background-color:#d3cdcd;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  padding-top: 5px; 
+  margin-top: 0;
+
+}
+
+
+.btn.btn-primary {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f77b07;
+  color: white;
+  padding: 8px 16px;           
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;              
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: auto;                 
+  min-width: 100px;            
+}
+
+/* Hover state */
+.btn.btn-primary:hover {
+  background-color: #f77b07;
+  transform: translateY(-2px);
+}
+
+
+.btn.btn-primary:active {
+  background-color: black;    
+  color: white;                
+  transform: scale(0.98);
+  border: none;
+}
+
+/* Event Details CSS */
+input.form-control.time-picker {
+  background-color: white;
+}
+
+.col .text-end{
+  padding-bottom: 20px;
+}
+.event-img {
+  width: 300px;        
+  height: 200px;       
+  object-fit: cover; 
+  object-position: center;
+  border-radius: 10px;
+}

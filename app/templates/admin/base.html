@@ -1,0 +1,61 @@
+<!-- ADMIN BASE HTML-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body>
+<div style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050; width: 100%; max-width: 400px;">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show text-center" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  </div>
+
+<div id="wrapper">
+  <!-- Sidebar -->
+  <div id="sidebar" class="d-flex flex-column">
+    <div class="sidebar-header">
+      <h4>ADMIN</h4>
+      <button id="toggle-btn"><i class="fas fa-bars"></i></button>
+    </div>
+    <a href="{{ url_for('admin.admin_homepage') }}" class="nav-link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+    <a href="{{ url_for('admin.events') }}" class="nav-link"><i class="fas fa-calendar-alt"></i><span>Events</span></a>
+    <a href="{{ url_for('admin.bookings') }}" class="nav-link"><i class="fas fa-calendar-check"></i><span>Bookings</span></a>
+    <a href="{{ url_for('admin.view_users') }}" class="nav-link"><i class="fas fa-users"></i><span>Users</span></a>
+    <a href="{{ url_for('event.home') }}" class="nav-link"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></a>
+
+  </div>
+   
+  <!-- Page Content -->
+  <div id="content">
+
+    {% block content %}
+    {% endblock %}
+  </div>
+</div>
+
+<!-- Scripts -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+</body>
+</html>

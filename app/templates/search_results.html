@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h3>Search Results for "{{ query }}"</h3>
+  <div class="row">
+    {% if events %}
+      {% for event in events %}
+        <div class="col-md-4 my-3">
+          <div class="card h-100">
+            {% if event.image.startswith('http') %}
+          <img src="{{ event.image }}" alt="{{ event.name }}" class="card-img-top">
+            {% else %}
+            <img src="{{ url_for('static', filename='uploads/' + event.image) }}" alt="{{ event.name }}" class=" card-img-top">
+             {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ event.name }}</h5>
+              <p class="card-text text-muted">{{ event.city }}, {{ event.date.strftime('%b %d, %Y') }}</p>
+              <a href="{{ url_for('event.event_details', event_id=event.id) }}" class="btn btn-primary btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No events found matching your search.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

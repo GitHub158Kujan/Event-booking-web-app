@@ -1,0 +1,48 @@
+{% extends "admin/base.html" %}
+<title>{% block title %}Admin Panel{% endblock %}</title>
+{% block content %}
+
+
+<!--Events Section-->
+<div class="events" id="events">
+  <div class="heading">
+    <h2>Events</h2>
+    <div class="event-card">
+          <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Location</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% if events %}
+        {% for event in events[:20] %}
+    <tr>
+      <td>{{event.name}}</td>
+      <td>{{event.date}}</td>
+      <td>{{event.city}}, {{event.state}}</td>
+      <td><span class="status">Published</span></td>
+      <td>
+  <a class="btn btn-danger btn-sm" href="{{ url_for('admin.delete_event', event_id=event.id) }}">Delete</a>
+</td>
+      </td>
+    </tr>
+    {%  endfor %}
+      {% else %}
+      <tr>
+            <td colspan="5" style="text-align: center;">No events found</td>
+          </tr>
+           {% endif%}
+  </tbody>
+  </table>
+        
+    </div>
+  </div>
+</div>
+
+{% endblock %}

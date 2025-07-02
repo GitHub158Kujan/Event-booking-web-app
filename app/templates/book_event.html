@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Book Event{% endblock %}
+
+{% block content %}
+<div class="book-event container my-5">
+    <div class="popup card shadow p-4">
+        <div class="popup-content">
+            <h2 class="mb-3">Book Your Event</h2>
+            {% if event %}
+                <h4 class="event-name">{{ event.name }}</h4>
+                <p class="event-date-time text-muted">
+                    {% set formatted_time = (datetime.combine(datetime.today(), datetime.min.time()) + event.time).strftime("%I:%M %p") %}
+                    {{ event.date.strftime("%b %d, %Y") }} at {{ formatted_time }}
+                </p>
+                <p class="event-location">{{ event.address }}, {{ event.city }}, {{ event.state }}</p>
+
+                <!-- Ticket Counter -->
+                <div class="ticket-quantity my-3 d-flex align-items-center">
+                    <label class="mr-2">Tickets:</label>
+                    <div class="wrapper d-flex align-items-center">
+                        <button type="button" class="minus btn btn-light border px-3">-</button>
+                        <span class="num px-3" id="ticketCount">01</span>
+                        <button type="button" class="plus btn btn-light border px-3">+</button>
+                    </div>
+                </div>
+
+                <!-- Total Price -->
+                <div class="form-group">
+                    <label>Total Price: $<span id="totalPrice">{{ "%.2f"|format(event.price) }}</span></label>
+                </div>
+
+                <!-- Form -->
+                <form action="{{ url_for('booking.create_booking', event_id=event.id) }}" method="POST" class="post mt-3">
+                    <input type="hidden" name="tickets" id="ticketsInput" value="1">
+                    <button type="submit" class="btn btn-primary btn-block">Book Now</button>
+                </form>
+            {% else %}
+                <p class="text-danger">Event details not available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

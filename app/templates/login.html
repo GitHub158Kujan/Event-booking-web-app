@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/auth.css') }}">
+    
+    <title>Login</title>
+  </head>
+  <body>
+    <div style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050; width: 100%; max-width: 400px;">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show text-center" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+
+</div>
+    <div class="auth-box">
+      <h2>Login</h2>
+      <form method="POST" action="{{ url_for('auth.login') }}">
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" name="email">
+        </div>
+
+        <div class="form-group position-relative">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+          <i class="bi bi-eye-slash position-absolute" id="togglePassword" style="cursor:pointer; right: 10px; top: 38px;"></i>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <p>Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign up</a></p>
+      </form>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const togglePassword = document.getElementById("togglePassword");
+        const password = document.getElementById("password");
+
+        if (togglePassword && password) {
+          togglePassword.addEventListener("click", () => {
+            const type = password.type === "password" ? "text" : "password";
+            password.type = type;
+            togglePassword.classList.toggle("bi-eye");
+            togglePassword.classList.toggle("bi-eye-slash");
+          });
+        }
+
+      });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

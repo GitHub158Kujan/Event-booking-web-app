@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+<title>{% block title %}Bookings{% endblock %}</title>
+{% block content %}
+
+
+<!--Events Section-->
+<div class="events" id="events">
+  <div class="heading">
+    <h2>Bookings</h2>
+    <div class="event-card">
+          <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Booking ID</th>
+      <th scope="col">Event</th>
+      <th scope="col">Username</th>
+      <th scope="col">Booking Date</th>
+      <th scope="col">Tickets</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if bookings %}
+        {% for booking in bookings[:20] %}
+<tr>
+  <td>{{booking.id}}</td>
+  <td>{{booking.event_name}}</td>
+  <td>{{booking.username}}</td>
+  <td>{{booking.booking_date.strftime('%Y-%m-%d %H:%M')}}</td>
+  <td style="text-align: center;">{{booking.tickets}}</td>
+  <td>
+    <a class="btn btn-danger btn-sm"
+       href="{{ url_for('admin.delete_booking', booking_id=booking.id) }}">Delete</a>
+  </td>
+</tr>
+{% endfor %}
+      {% else %}
+      <tr>
+            <td colspan="5" style="text-align: center;">No Booking found</td>
+          </tr>
+           {% endif%}
+  </tbody>
+  </table>
+        
+    </div>
+  </div>
+</div>
+
+{% endblock %}

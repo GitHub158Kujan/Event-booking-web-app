@@ -1,0 +1,45 @@
+{% extends "admin/base.html" %}
+<title>{% block title %}Users{% endblock %}</title>
+{% block content %}
+
+
+<div class="events" id="events">
+  <div class="heading">
+    <h2>Users</h2>
+    <div class="add-event">
+      <a class="btn-create-event" href="{{ url_for('auth.signup') }}">Add User</a>
+    </div>
+    <div class="event-card">
+          <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if users %}
+        {% for user in users[:20] %}
+    <tr>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+        <td>{{ 'Admin' if user.role == 'admin' else 'User' }}</td>
+      <td style="text-align: center;">   
+      <a class="btn btn-danger btn-sm" href="{{ url_for('admin.delete_user', user_id=user.id) }}">Delete</a></td> 
+    </tr>
+    {%  endfor %}
+      {% else %}
+      <tr>
+            <td colspan="5" style="text-align: center;">No user found</td>
+          </tr>
+           {% endif%}
+  </tbody>
+  </table>
+        
+    </div>
+  </div>
+</div>
+
+{% endblock %}
