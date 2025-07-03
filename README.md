@@ -42,7 +42,7 @@ An online event booking platform built with **Flask**, **MySQL**, and **Bootstra
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/your-username/event-booking-app.git
+git clone https://github.com/GitHub158Kujan/event-booking-app.git
 cd event-booking-app
 ```
 ## 🚧 Future Improvements
